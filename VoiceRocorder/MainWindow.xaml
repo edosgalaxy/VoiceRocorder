@@ -1,0 +1,36 @@
+<Window x:Class="VoiceRocorder.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="VoiceRocorder" Height="610" Width="900" MinHeight="480" MinWidth="700"
+        WindowStartupLocation="CenterScreen">
+    <DockPanel Margin="14">
+        <StackPanel DockPanel.Dock="Top">
+            <TextBlock Text="VoiceRocorder" FontSize="25" FontWeight="Bold" Margin="3,0,0,10"/>
+            <WrapPanel>
+                <TextBlock Text="Микрофон:" VerticalAlignment="Center" Margin="4"/>
+                <ComboBox x:Name="MicrophoneBox" Width="390" Margin="4" DisplayMemberPath="Name"/>
+                <Button Content="Обновить" Click="Refresh_Click"/>
+            </WrapPanel>
+            <WrapPanel Margin="0,5,0,8">
+                <Button x:Name="RecordButton" Content="● Запись" Click="Record_Click"/>
+                <Button x:Name="StopButton" Content="■ Стоп" Click="Stop_Click" IsEnabled="False"/>
+                <Button Content="▶ Оригинал" Click="PlayOriginal_Click"/>
+                <Button Content="◀ Реверс" Click="PlayReverse_Click"/>
+                <Button Content="Остановить звук" Click="StopPlayback_Click"/>
+            </WrapPanel>
+            <WrapPanel>
+                <Button Content="Перевернуть дорожку" Click="Reverse_Click"/>
+                <Button Content="Вернуть оригинал" Click="Original_Click"/>
+                <Button Content="Экспорт WAV" Click="Export_Click"/>
+                <Button Content="Сохранить проект" Click="SaveProject_Click"/>
+                <Button Content="Открыть проект" Click="OpenProject_Click"/>
+            </WrapPanel>
+        </StackPanel>
+        <TextBlock x:Name="StatusText" DockPanel.Dock="Bottom" Margin="4,10,4,0"
+                   Foreground="DimGray" Text="Готово."/>
+        <GroupBox Header="Дорожки проекта" Margin="3,10,3,3">
+            <ListBox x:Name="TracksList" Margin="7" SelectionChanged="TracksList_SelectionChanged"
+                     DisplayMemberPath="DisplayName"/>
+        </GroupBox>
+    </DockPanel>
+</Window>
