@@ -78,7 +78,7 @@ public partial class MainWindow : Window
             _recordingPath = Path.Combine(Path.GetTempPath(), $"VoiceRocorder_{Guid.NewGuid():N}.wav");
 
             // Shared-mode WASAPI uses the endpoint mix format and avoids the legacy waveInOpen/MME capture path.
-            _capture = new WasapiCapture(_selectedDevice, useEventSync: true, audioBufferMilliseconds: 100);
+            _capture = new WasapiCapture(_selectedDevice);
             var format = _capture.WaveFormat;
             _writer = new WaveFileWriter(_recordingPath, format);
             _capture.DataAvailable += Capture_DataAvailable;
